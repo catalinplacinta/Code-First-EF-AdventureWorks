@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7CBA5E8D-DB38-4B75-89EC-E9ECBF0D44A2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AdventureWorks</RootNamespace>
+    <AssemblyName>AdventureWorks</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.6.0\lib\net40-client\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.Seeder.EF6, Version=0.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Seeder.EF6.0.4.0\lib\EntityFramework.Seeder.EF6.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\Address.cs" />
+    <Compile Include="Domain\AddressType.cs" />
+    <Compile Include="Domain\BillOfMaterial.cs" />
+    <Compile Include="Domain\BusinessEntity.cs" />
+    <Compile Include="Domain\BusinessEntityAddress.cs" />
+    <Compile Include="Domain\BusinessEntityContact.cs" />
+    <Compile Include="Domain\ContactType.cs" />
+    <Compile Include="Domain\CountryRegion.cs" />
+    <Compile Include="Domain\CountryRegionCurrency.cs" />
+    <Compile Include="Domain\CreditCard.cs" />
+    <Compile Include="Domain\Culture.cs" />
+    <Compile Include="Domain\Currency.cs" />
+    <Compile Include="Domain\CurrencyRate.cs" />
+    <Compile Include="Domain\Customer.cs" />
+    <Compile Include="Domain\Department.cs" />
+    <Compile Include="Domain\EmailAddress.cs" />
+    <Compile Include="Domain\Employee.cs" />
+    <Compile Include="Domain\EmployeeDepartmentHistory.cs" />
+    <Compile Include="Domain\EmployeePayHistory.cs" />
+    <Compile Include="Domain\Illustration.cs" />
+    <Compile Include="Domain\JobCandidate.cs" />
+    <Compile Include="Domain\Location.cs" />
+    <Compile Include="AdventureWorksContext.cs" />
+    <Compile Include="Domain\Password.cs" />
+    <Compile Include="Domain\Person.cs" />
+    <Compile Include="Domain\PersonCreditCard.cs" />
+    <Compile Include="Domain\PersonPhone.cs" />
+    <Compile Include="Domain\PhoneNumberType.cs" />
+    <Compile Include="Domain\Product.cs" />
+    <Compile Include="Domain\ProductCategory.cs" />
+    <Compile Include="Domain\ProductCostHistory.cs" />
+    <Compile Include="Domain\ProductDescription.cs" />
+    <Compile Include="Domain\ProductDocument.cs" />
+    <Compile Include="Domain\ProductInventory.cs" />
+    <Compile Include="Domain\ProductListPriceHistory.cs" />
+    <Compile Include="Domain\ProductModel.cs" />
+    <Compile Include="Domain\ProductModelIllustration.cs" />
+    <Compile Include="Domain\ProductModelProductDescriptionCulture.cs" />
+    <Compile Include="Domain\ProductPhoto.cs" />
+    <Compile Include="Domain\ProductProductPhoto.cs" />
+    <Compile Include="Domain\ProductReview.cs" />
+    <Compile Include="Domain\ProductSubcategory.cs" />
+    <Compile Include="Domain\ProductVendor.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Domain\PurchaseOrderDetail.cs" />
+    <Compile Include="Domain\PurchaseOrderHeader.cs" />
+    <Compile Include="Domain\SalesOrderDetail.cs" />
+    <Compile Include="Domain\SalesOrderHeader.cs" />
+    <Compile Include="Domain\SalesOrderHeaderSalesReason.cs" />
+    <Compile Include="Domain\SalesPerson.cs" />
+    <Compile Include="Domain\SalesPersonQuotaHistory.cs" />
+    <Compile Include="Domain\SalesReason.cs" />
+    <Compile Include="Domain\SalesTaxRate.cs" />
+    <Compile Include="Domain\SalesTerritory.cs" />
+    <Compile Include="Domain\SalesTerritoryHistory.cs" />
+    <Compile Include="Domain\ScrapReason.cs" />
+    <Compile Include="Domain\Shift.cs" />
+    <Compile Include="Domain\ShipMethod.cs" />
+    <Compile Include="Domain\ShoppingCartItem.cs" />
+    <Compile Include="Domain\SpecialOffer.cs" />
+    <Compile Include="Domain\SpecialOfferProduct.cs" />
+    <Compile Include="Domain\StateProvince.cs" />
+    <Compile Include="Domain\Store.cs" />
+    <Compile Include="Domain\TransactionHistory.cs" />
+    <Compile Include="Domain\TransactionHistoryArchive.cs" />
+    <Compile Include="Domain\UnitMeasure.cs" />
+    <Compile Include="Domain\Vendor.cs" />
+    <Compile Include="Domain\WorkOrder.cs" />
+    <Compile Include="Domain\WorkOrderRouting.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+    <EmbeddedResource Include="SeedData\HumanResources.Department.csv" />
+    <EmbeddedResource Include="SeedData\HumanResources.EmployeeDepartmentHistory.csv" />
+    <EmbeddedResource Include="SeedData\HumanResources.EmployeePayHistory.csv" />
+    <EmbeddedResource Include="SeedData\HumanResources.Shift.csv" />
+    <EmbeddedResource Include="SeedData\HumanResources.Employee.csv" />
+    <EmbeddedResource Include="SeedData\HumanResources.JobCandidate.csv" />
+    <EmbeddedResource Include="SeedData\Person.Person.csv" />
+    <EmbeddedResource Include="SeedData\Person.BusinessEntity.csv" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
