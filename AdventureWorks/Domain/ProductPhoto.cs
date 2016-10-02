@@ -1,34 +1,65 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace AdventureWorks.Domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics.CodeAnalysis;
+
+    /// <summary>
+    /// The product photo.
+    /// </summary>
     [Table("Production.ProductPhoto")]
-    public partial class ProductPhoto
+    public class ProductPhoto
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ProductPhoto"/> class.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ProductPhoto()
         {
-            ProductProductPhotoes = new HashSet<ProductProductPhoto>();
+            this.ProductProductPhotoes = new HashSet<ProductProductPhoto>();
         }
 
+        /// <summary>
+        /// Gets or sets the product photo id.
+        /// </summary>
         public int ProductPhotoID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the thumb nail photo.
+        /// </summary>
         public byte[] ThumbNailPhoto { get; set; }
 
+        /// <summary>
+        /// Gets or sets the thumbnail photo file name.
+        /// </summary>
         [StringLength(50)]
         public string ThumbnailPhotoFileName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the large photo.
+        /// </summary>
         public byte[] LargePhoto { get; set; }
 
+        /// <summary>
+        /// Gets or sets the large photo file name.
+        /// </summary>
         [StringLength(50)]
         public string LargePhotoFileName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the modified date.
+        /// </summary>
         public DateTime ModifiedDate { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        /// <summary>
+        /// Gets or sets the product product photoes.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProductProductPhoto> ProductProductPhotoes { get; set; }
     }
 }

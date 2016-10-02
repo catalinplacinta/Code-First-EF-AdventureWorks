@@ -1,39 +1,72 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace AdventureWorks.Domain
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Diagnostics.CodeAnalysis;
+
+    /// <summary>
+    /// The store.
+    /// </summary>
     [Table("Sales.Store")]
-    public partial class Store
+    public class Store
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Store"/> class.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Store()
         {
-            Customers = new HashSet<Customer>();
+            this.Customers = new HashSet<Customer>();
         }
 
+        /// <summary>
+        /// Gets or sets the business entity id.
+        /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BusinessEntityID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name.
+        /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
+        /// <summary>
+        /// Gets or sets the sales person id.
+        /// </summary>
         public int? SalesPersonID { get; set; }
 
+        /// <summary>
+        /// Gets or sets the demographics.
+        /// </summary>
         [Column(TypeName = "xml")]
         public string Demographics { get; set; }
 
+        /// <summary>
+        /// Gets or sets the modified date.
+        /// </summary>
         public DateTime ModifiedDate { get; set; }
 
+        /// <summary>
+        /// Gets or sets the business entity.
+        /// </summary>
         public virtual BusinessEntity BusinessEntity { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        /// <summary>
+        /// Gets or sets the customers.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the sales person.
+        /// </summary>
         public virtual SalesPerson SalesPerson { get; set; }
     }
 }

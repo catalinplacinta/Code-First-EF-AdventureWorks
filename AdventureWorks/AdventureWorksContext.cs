@@ -1,83 +1,366 @@
-using System.Data.Entity;
-using AdventureWorks.Domain;
-
 namespace AdventureWorks
 {
-    public partial class AdventureWorksContext : DbContext
+    using System.Data.Entity;
+    using System.Diagnostics.CodeAnalysis;
+
+    using AdventureWorks.Domain;
+
+    /// <summary>
+    /// The adventure works context.
+    /// </summary>
+    public class AdventureWorksContext : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AdventureWorksContext"/> class.
+        /// </summary>
         public AdventureWorksContext()
             : base("AdventureWorks")
         {
         }
 
+        /// <summary>
+        /// Gets or sets the departments.
+        /// </summary>
         public virtual DbSet<Department> Departments { get; set; }
+
+        /// <summary>
+        /// Gets or sets the employees.
+        /// </summary>
         public virtual DbSet<Employee> Employees { get; set; }
+
+        /// <summary>
+        /// Gets or sets the employee department histories.
+        /// </summary>
         public virtual DbSet<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the employee pay histories.
+        /// </summary>
         public virtual DbSet<EmployeePayHistory> EmployeePayHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the job candidates.
+        /// </summary>
         public virtual DbSet<JobCandidate> JobCandidates { get; set; }
+
+        /// <summary>
+        /// Gets or sets the shifts.
+        /// </summary>
         public virtual DbSet<Shift> Shifts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the addresses.
+        /// </summary>
         public virtual DbSet<Address> Addresses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the address types.
+        /// </summary>
         public virtual DbSet<AddressType> AddressTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the business entities.
+        /// </summary>
         public virtual DbSet<BusinessEntity> BusinessEntities { get; set; }
+
+        /// <summary>
+        /// Gets or sets the business entity addresses.
+        /// </summary>
         public virtual DbSet<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the business entity contacts.
+        /// </summary>
         public virtual DbSet<BusinessEntityContact> BusinessEntityContacts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the contact types.
+        /// </summary>
         public virtual DbSet<ContactType> ContactTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country regions.
+        /// </summary>
         public virtual DbSet<CountryRegion> CountryRegions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the email addresses.
+        /// </summary>
         public virtual DbSet<EmailAddress> EmailAddresses { get; set; }
+
+        /// <summary>
+        /// Gets or sets the passwords.
+        /// </summary>
         public virtual DbSet<Password> Passwords { get; set; }
+
+        /// <summary>
+        /// Gets or sets the people.
+        /// </summary>
         public virtual DbSet<Person> People { get; set; }
+
+        /// <summary>
+        /// Gets or sets the person phones.
+        /// </summary>
         public virtual DbSet<PersonPhone> PersonPhones { get; set; }
+
+        /// <summary>
+        /// Gets or sets the phone number types.
+        /// </summary>
         public virtual DbSet<PhoneNumberType> PhoneNumberTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the state provinces.
+        /// </summary>
         public virtual DbSet<StateProvince> StateProvinces { get; set; }
+
+        /// <summary>
+        /// Gets or sets the bill of materials.
+        /// </summary>
         public virtual DbSet<BillOfMaterial> BillOfMaterials { get; set; }
+
+        /// <summary>
+        /// Gets or sets the cultures.
+        /// </summary>
         public virtual DbSet<Culture> Cultures { get; set; }
+
+        /// <summary>
+        /// Gets or sets the illustrations.
+        /// </summary>
         public virtual DbSet<Illustration> Illustrations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the locations.
+        /// </summary>
         public virtual DbSet<Location> Locations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the products.
+        /// </summary>
         public virtual DbSet<Product> Products { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product categories.
+        /// </summary>
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product cost histories.
+        /// </summary>
         public virtual DbSet<ProductCostHistory> ProductCostHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product descriptions.
+        /// </summary>
         public virtual DbSet<ProductDescription> ProductDescriptions { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product inventories.
+        /// </summary>
         public virtual DbSet<ProductInventory> ProductInventories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product list price histories.
+        /// </summary>
         public virtual DbSet<ProductListPriceHistory> ProductListPriceHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product models.
+        /// </summary>
         public virtual DbSet<ProductModel> ProductModels { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product model illustrations.
+        /// </summary>
         public virtual DbSet<ProductModelIllustration> ProductModelIllustrations { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product model product description cultures.
+        /// </summary>
         public virtual DbSet<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product photoes.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public virtual DbSet<ProductPhoto> ProductPhotoes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product product photoes.
+        /// </summary>
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
         public virtual DbSet<ProductProductPhoto> ProductProductPhotoes { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product reviews.
+        /// </summary>
         public virtual DbSet<ProductReview> ProductReviews { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product subcategories.
+        /// </summary>
         public virtual DbSet<ProductSubcategory> ProductSubcategories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the scrap reasons.
+        /// </summary>
         public virtual DbSet<ScrapReason> ScrapReasons { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transaction histories.
+        /// </summary>
         public virtual DbSet<TransactionHistory> TransactionHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the transaction history archives.
+        /// </summary>
         public virtual DbSet<TransactionHistoryArchive> TransactionHistoryArchives { get; set; }
+
+        /// <summary>
+        /// Gets or sets the unit measures.
+        /// </summary>
         public virtual DbSet<UnitMeasure> UnitMeasures { get; set; }
+
+        /// <summary>
+        /// Gets or sets the work orders.
+        /// </summary>
         public virtual DbSet<WorkOrder> WorkOrders { get; set; }
+
+        /// <summary>
+        /// Gets or sets the work order routings.
+        /// </summary>
         public virtual DbSet<WorkOrderRouting> WorkOrderRoutings { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product vendors.
+        /// </summary>
         public virtual DbSet<ProductVendor> ProductVendors { get; set; }
+
+        /// <summary>
+        /// Gets or sets the purchase order details.
+        /// </summary>
         public virtual DbSet<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the purchase order headers.
+        /// </summary>
         public virtual DbSet<PurchaseOrderHeader> PurchaseOrderHeaders { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ship methods.
+        /// </summary>
         public virtual DbSet<ShipMethod> ShipMethods { get; set; }
+
+        /// <summary>
+        /// Gets or sets the vendors.
+        /// </summary>
         public virtual DbSet<Vendor> Vendors { get; set; }
+
+        /// <summary>
+        /// Gets or sets the country region currencies.
+        /// </summary>
         public virtual DbSet<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
+
+        /// <summary>
+        /// Gets or sets the credit cards.
+        /// </summary>
         public virtual DbSet<CreditCard> CreditCards { get; set; }
+
+        /// <summary>
+        /// Gets or sets the currencies.
+        /// </summary>
         public virtual DbSet<Currency> Currencies { get; set; }
+
+        /// <summary>
+        /// Gets or sets the currency rates.
+        /// </summary>
         public virtual DbSet<CurrencyRate> CurrencyRates { get; set; }
+
+        /// <summary>
+        /// Gets or sets the customers.
+        /// </summary>
         public virtual DbSet<Customer> Customers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the person credit cards.
+        /// </summary>
         public virtual DbSet<PersonCreditCard> PersonCreditCards { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales order details.
+        /// </summary>
         public virtual DbSet<SalesOrderDetail> SalesOrderDetails { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales order headers.
+        /// </summary>
         public virtual DbSet<SalesOrderHeader> SalesOrderHeaders { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales order header sales reasons.
+        /// </summary>
         public virtual DbSet<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales persons.
+        /// </summary>
         public virtual DbSet<SalesPerson> SalesPersons { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales person quota histories.
+        /// </summary>
         public virtual DbSet<SalesPersonQuotaHistory> SalesPersonQuotaHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales reasons.
+        /// </summary>
         public virtual DbSet<SalesReason> SalesReasons { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales tax rates.
+        /// </summary>
         public virtual DbSet<SalesTaxRate> SalesTaxRates { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales territories.
+        /// </summary>
         public virtual DbSet<SalesTerritory> SalesTerritories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the sales territory histories.
+        /// </summary>
         public virtual DbSet<SalesTerritoryHistory> SalesTerritoryHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the shopping cart items.
+        /// </summary>
         public virtual DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        /// <summary>
+        /// Gets or sets the special offers.
+        /// </summary>
         public virtual DbSet<SpecialOffer> SpecialOffers { get; set; }
+
+        /// <summary>
+        /// Gets or sets the special offer products.
+        /// </summary>
         public virtual DbSet<SpecialOfferProduct> SpecialOfferProducts { get; set; }
+
+        /// <summary>
+        /// Gets or sets the stores.
+        /// </summary>
         public virtual DbSet<Store> Stores { get; set; }
+
+        /// <summary>
+        /// Gets or sets the product documents.
+        /// </summary>
         public virtual DbSet<ProductDocument> ProductDocuments { get; set; }
 
+        /// <summary>
+        /// The on model creating.
+        /// </summary>
+        /// <param name="modelBuilder">
+        /// The model builder.
+        /// </param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Department>()
