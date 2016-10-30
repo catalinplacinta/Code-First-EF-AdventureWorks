@@ -137,6 +137,7 @@
     <Compile Include="Domain\Vendor.cs" />
     <Compile Include="Domain\WorkOrder.cs" />
     <Compile Include="Domain\WorkOrderRouting.cs" />
+    <Compile Include="SeedData\SeedHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
