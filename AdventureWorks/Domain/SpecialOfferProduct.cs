@@ -7,15 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The special offer product.
+    ///     The special offer product.
     /// </summary>
     [Table("Sales.SpecialOfferProduct")]
-    public class SpecialOfferProduct
+    public class SpecialOfferProduct : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SpecialOfferProduct"/> class.
+        ///     Initializes a new instance of the <see cref="SpecialOfferProduct" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification",
+             Justification = "Reviewed. Suppression is OK here.")]
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SpecialOfferProduct()
         {
@@ -23,15 +24,17 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the special offer id.
+        ///     Gets or sets the modified date.
         /// </summary>
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int SpecialOfferID { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the product id.
+        ///     Gets or sets the product.
+        /// </summary>
+        public virtual Product Product { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product id.
         /// </summary>
         [Key]
         [Column(Order = 1)]
@@ -39,25 +42,24 @@ namespace AdventureWorks.Domain
         public int ProductID { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the sales order details.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product.
-        /// </summary>
-        public virtual Product Product { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales order details.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification",
+             Justification = "Reviewed. Suppression is OK here.")]
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderDetail> SalesOrderDetails { get; set; }
 
         /// <summary>
-        /// Gets or sets the special offer.
+        ///     Gets or sets the special offer.
         /// </summary>
         public virtual SpecialOffer SpecialOffer { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the special offer id.
+        /// </summary>
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int SpecialOfferID { get; set; }
     }
 }

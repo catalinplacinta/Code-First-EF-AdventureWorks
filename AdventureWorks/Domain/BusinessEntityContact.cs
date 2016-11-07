@@ -5,13 +5,18 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The business entity contact.
+    ///     The business entity contact.
     /// </summary>
     [Table("Person.BusinessEntityContact")]
-    public class BusinessEntityContact
+    public class BusinessEntityContact : Entity
     {
         /// <summary>
-        /// Gets or sets the business entity id.
+        ///     Gets or sets the business entity.
+        /// </summary>
+        public virtual BusinessEntity BusinessEntity { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the business entity id.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,15 +24,12 @@ namespace AdventureWorks.Domain
         public int BusinessEntityID { get; set; }
 
         /// <summary>
-        /// Gets or sets the person id.
+        ///     Gets or sets the contact type.
         /// </summary>
-        [Key]
-        [Column(Order = 1)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int PersonID { get; set; }
+        public virtual ContactType ContactType { get; set; }
 
         /// <summary>
-        /// Gets or sets the contact type id.
+        ///     Gets or sets the contact type id.
         /// </summary>
         [Key]
         [Column(Order = 2)]
@@ -35,23 +37,21 @@ namespace AdventureWorks.Domain
         public int ContactTypeID { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the business entity.
-        /// </summary>
-        public virtual BusinessEntity BusinessEntity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the contact type.
-        /// </summary>
-        public virtual ContactType ContactType { get; set; }
-
-        /// <summary>
-        /// Gets or sets the person.
+        ///     Gets or sets the person.
         /// </summary>
         public virtual Person Person { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the person id.
+        /// </summary>
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int PersonID { get; set; }
     }
 }

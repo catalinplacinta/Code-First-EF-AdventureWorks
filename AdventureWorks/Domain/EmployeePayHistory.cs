@@ -5,13 +5,13 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The employee pay history.
+    ///     The employee pay history.
     /// </summary>
     [Table("HumanResources.EmployeePayHistory")]
-    public class EmployeePayHistory
+    public class EmployeePayHistory : Entity
     {
         /// <summary>
-        /// Gets or sets the business entity id.
+        ///     Gets or sets the business entity id.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,31 +19,31 @@ namespace AdventureWorks.Domain
         public int BusinessEntityID { get; set; }
 
         /// <summary>
-        /// Gets or sets the rate change date.
+        ///     Gets or sets the employee.
         /// </summary>
-        [Key]
-        [Column(Order = 1)]
-        public DateTime RateChangeDate { get; set; }
+        public virtual Employee Employee { get; set; }
 
         /// <summary>
-        /// Gets or sets the rate.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the pay frequency.
+        /// </summary>
+        public byte PayFrequency { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the rate.
         /// </summary>
         [Column(TypeName = "money")]
         public decimal Rate { get; set; }
 
         /// <summary>
-        /// Gets or sets the pay frequency.
+        ///     Gets or sets the rate change date.
         /// </summary>
-        public byte PayFrequency { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the employee.
-        /// </summary>
-        public virtual Employee Employee { get; set; }
+        [Key]
+        [Column(Order = 1)]
+        public DateTime RateChangeDate { get; set; }
     }
 }

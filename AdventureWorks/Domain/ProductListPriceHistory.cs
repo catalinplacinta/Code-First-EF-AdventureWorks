@@ -5,13 +5,34 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The product list price history.
+    ///     The product list price history.
     /// </summary>
     [Table("Production.ProductListPriceHistory")]
-    public class ProductListPriceHistory
+    public class ProductListPriceHistory : Entity
     {
         /// <summary>
-        /// Gets or sets the product id.
+        ///     Gets or sets the end date.
+        /// </summary>
+        public DateTime? EndDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list price.
+        /// </summary>
+        [Column(TypeName = "money")]
+        public decimal ListPrice { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product.
+        /// </summary>
+        public virtual Product Product { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product id.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,31 +40,10 @@ namespace AdventureWorks.Domain
         public int ProductID { get; set; }
 
         /// <summary>
-        /// Gets or sets the start date.
+        ///     Gets or sets the start date.
         /// </summary>
         [Key]
         [Column(Order = 1)]
         public DateTime StartDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the end date.
-        /// </summary>
-        public DateTime? EndDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the list price.
-        /// </summary>
-        [Column(TypeName = "money")]
-        public decimal ListPrice { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product.
-        /// </summary>
-        public virtual Product Product { get; set; }
     }
 }

@@ -4,35 +4,35 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The job candidate.
+    ///     The job candidate.
     /// </summary>
     [Table("HumanResources.JobCandidate")]
-    public class JobCandidate
+    public class JobCandidate : Entity
     {
         /// <summary>
-        /// Gets or sets the job candidate id.
-        /// </summary>
-        public int JobCandidateID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the business entity id.
+        ///     Gets or sets the business entity id.
         /// </summary>
         public int? BusinessEntityID { get; set; }
 
         /// <summary>
-        /// Gets or sets the resume.
+        ///     Gets or sets the employee.
         /// </summary>
-        [Column(TypeName = "xml")]
-        public string Resume { get; set; }
+        public virtual Employee Employee { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the job candidate id.
+        /// </summary>
+        public int JobCandidateID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the employee.
+        ///     Gets or sets the resume.
         /// </summary>
-        public virtual Employee Employee { get; set; }
+        [Column(TypeName = "xml")]
+        public string Resume { get; set; }
     }
 }

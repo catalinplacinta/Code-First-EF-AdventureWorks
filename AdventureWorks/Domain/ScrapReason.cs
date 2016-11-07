@@ -7,43 +7,43 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The scrap reason.
+    ///     The scrap reason.
     /// </summary>
     [Table("Production.ScrapReason")]
-    public class ScrapReason
+    public class ScrapReason : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ScrapReason"/> class.
+        ///     Initializes a new instance of the <see cref="ScrapReason" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public ScrapReason()
         {
             this.WorkOrders = new HashSet<WorkOrder>();
         }
 
         /// <summary>
-        /// Gets or sets the scrap reason id.
+        ///     Gets or sets the modified date.
         /// </summary>
-        public short ScrapReasonID { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the scrap reason id.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
+        public short ScrapReasonID { get; set; }
 
         /// <summary>
-        /// Gets or sets the work orders.
+        ///     Gets or sets the work orders.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

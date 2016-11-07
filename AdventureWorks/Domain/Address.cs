@@ -8,14 +8,15 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The address.
+    ///     The address.
     /// </summary>
-    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification",
+         Justification = "Reviewed. Suppression is OK here.")]
     [Table("Person.Address")]
-    public class Address
+    public class Address : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Address"/> class.
+        ///     Initializes a new instance of the <see cref="Address" /> class.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Address()
@@ -26,73 +27,73 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the address id.
+        ///     Gets or sets the address id.
         /// </summary>
         public int AddressID { get; set; }
 
         /// <summary>
-        /// Gets or sets the address line 1.
+        ///     Gets or sets the address line 1.
         /// </summary>
         [Required]
         [StringLength(60)]
         public string AddressLine1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the address line 2.
+        ///     Gets or sets the address line 2.
         /// </summary>
         [StringLength(60)]
         public string AddressLine2 { get; set; }
 
         /// <summary>
-        /// Gets or sets the city.
+        ///     Gets or sets the business entity addresses.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the city.
         /// </summary>
         [Required]
         [StringLength(30)]
         public string City { get; set; }
 
         /// <summary>
-        /// Gets or sets the state province id.
+        ///     Gets or sets the modified date.
         /// </summary>
-        public int StateProvinceID { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the postal code.
+        ///     Gets or sets the postal code.
         /// </summary>
         [Required]
         [StringLength(15)]
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the spatial location.
-        /// </summary>
-        public DbGeography SpatialLocation { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the state province.
-        /// </summary>
-        public virtual StateProvince StateProvince { get; set; }
-
-        /// <summary>
-        /// Gets or sets the business entity addresses.
-        /// </summary>
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BusinessEntityAddress> BusinessEntityAddresses { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales order headers.
+        ///     Gets or sets the sales order headers.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders { get; set; }
 
         /// <summary>
-        /// Gets or sets the sales order headers 1.
+        ///     Gets or sets the sales order headers 1.
         /// </summary>
         [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SalesOrderHeader> SalesOrderHeaders1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the spatial location.
+        /// </summary>
+        public DbGeography SpatialLocation { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the state province.
+        /// </summary>
+        public virtual StateProvince StateProvince { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the state province id.
+        /// </summary>
+        public int StateProvinceID { get; set; }
     }
 }

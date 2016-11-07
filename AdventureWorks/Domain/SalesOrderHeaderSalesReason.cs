@@ -5,13 +5,23 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The sales order header sales reason.
+    ///     The sales order header sales reason.
     /// </summary>
     [Table("Sales.SalesOrderHeaderSalesReason")]
-    public class SalesOrderHeaderSalesReason
+    public class SalesOrderHeaderSalesReason : Entity
     {
         /// <summary>
-        /// Gets or sets the sales order id.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sales order header.
+        /// </summary>
+        public virtual SalesOrderHeader SalesOrderHeader { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sales order id.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,26 +29,16 @@ namespace AdventureWorks.Domain
         public int SalesOrderID { get; set; }
 
         /// <summary>
-        /// Gets or sets the sales reason id.
+        ///     Gets or sets the sales reason.
+        /// </summary>
+        public virtual SalesReason SalesReason { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sales reason id.
         /// </summary>
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SalesReasonID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales order header.
-        /// </summary>
-        public virtual SalesOrderHeader SalesOrderHeader { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales reason.
-        /// </summary>
-        public virtual SalesReason SalesReason { get; set; }
     }
 }

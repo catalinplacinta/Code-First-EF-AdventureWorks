@@ -7,44 +7,45 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The culture.
+    ///     The culture.
     /// </summary>
     [Table("Production.Culture")]
-    public class Culture
+    public class Culture : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Culture"/> class.
+        ///     Initializes a new instance of the <see cref="Culture" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Culture()
         {
             this.ProductModelProductDescriptionCultures = new HashSet<ProductModelProductDescriptionCulture>();
         }
 
         /// <summary>
-        /// Gets or sets the culture id.
+        ///     Gets or sets the culture id.
         /// </summary>
         [StringLength(6)]
         public string CultureID { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the product model product description cultures.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product model product description cultures.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get;
+            set; }
     }
 }

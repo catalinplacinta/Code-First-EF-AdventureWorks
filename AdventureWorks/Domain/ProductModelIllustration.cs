@@ -5,21 +5,18 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The product model illustration.
+    ///     The product model illustration.
     /// </summary>
     [Table("Production.ProductModelIllustration")]
-    public class ProductModelIllustration
+    public class ProductModelIllustration : Entity
     {
         /// <summary>
-        /// Gets or sets the product model id.
+        ///     Gets or sets the illustration.
         /// </summary>
-        [Key]
-        [Column(Order = 0)]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int ProductModelID { get; set; }
+        public virtual Illustration Illustration { get; set; }
 
         /// <summary>
-        /// Gets or sets the illustration id.
+        ///     Gets or sets the illustration id.
         /// </summary>
         [Key]
         [Column(Order = 1)]
@@ -27,18 +24,21 @@ namespace AdventureWorks.Domain
         public int IllustrationID { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the illustration.
-        /// </summary>
-        public virtual Illustration Illustration { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product model.
+        ///     Gets or sets the product model.
         /// </summary>
         public virtual ProductModel ProductModel { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product model id.
+        /// </summary>
+        [Key]
+        [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ProductModelID { get; set; }
     }
 }

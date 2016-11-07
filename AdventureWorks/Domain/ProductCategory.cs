@@ -7,43 +7,43 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The product category.
+    ///     The product category.
     /// </summary>
     [Table("Production.ProductCategory")]
-    public class ProductCategory
+    public class ProductCategory : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProductCategory"/> class.
+        ///     Initializes a new instance of the <see cref="ProductCategory" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public ProductCategory()
         {
             this.ProductSubcategories = new HashSet<ProductSubcategory>();
         }
 
         /// <summary>
-        /// Gets or sets the product category id.
+        ///     Gets or sets the modified date.
         /// </summary>
-        public int ProductCategoryID { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the product category id.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
+        public int ProductCategoryID { get; set; }
 
         /// <summary>
-        /// Gets or sets the product subcategories.
+        ///     Gets or sets the product subcategories.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<ProductSubcategory> ProductSubcategories { get; set; }
     }
 }

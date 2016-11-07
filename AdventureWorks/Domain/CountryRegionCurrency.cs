@@ -5,13 +5,18 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The country region currency.
+    ///     The country region currency.
     /// </summary>
     [Table("Sales.CountryRegionCurrency")]
-    public class CountryRegionCurrency
+    public class CountryRegionCurrency : Entity
     {
         /// <summary>
-        /// Gets or sets the country region code.
+        ///     Gets or sets the country region.
+        /// </summary>
+        public virtual CountryRegion CountryRegion { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the country region code.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,7 +24,12 @@ namespace AdventureWorks.Domain
         public string CountryRegionCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the currency code.
+        ///     Gets or sets the currency.
+        /// </summary>
+        public virtual Currency Currency { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the currency code.
         /// </summary>
         [Key]
         [Column(Order = 1)]
@@ -27,18 +37,8 @@ namespace AdventureWorks.Domain
         public string CurrencyCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the country region.
-        /// </summary>
-        public virtual CountryRegion CountryRegion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the currency.
-        /// </summary>
-        public virtual Currency Currency { get; set; }
     }
 }

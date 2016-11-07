@@ -7,50 +7,50 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The department.
+    ///     The department.
     /// </summary>
     [Table("HumanResources.Department")]
-    public class Department
+    public class Department : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Department"/> class.
+        ///     Initializes a new instance of the <see cref="Department" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Department()
         {
             this.EmployeeDepartmentHistories = new HashSet<EmployeeDepartmentHistory>();
         }
 
         /// <summary>
-        /// Gets or sets the department id.
+        ///     Gets or sets the department id.
         /// </summary>
         public short DepartmentID { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the employee department histories.
         /// </summary>
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
 
         /// <summary>
-        /// Gets or sets the group name.
+        ///     Gets or sets the group name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string GroupName { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the employee department histories.
+        ///     Gets or sets the name.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EmployeeDepartmentHistory> EmployeeDepartmentHistories { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
     }
 }

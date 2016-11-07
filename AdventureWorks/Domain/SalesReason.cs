@@ -7,50 +7,50 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The sales reason.
+    ///     The sales reason.
     /// </summary>
     [Table("Sales.SalesReason")]
-    public class SalesReason
+    public class SalesReason : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="SalesReason"/> class.
+        ///     Initializes a new instance of the <see cref="SalesReason" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public SalesReason()
         {
             this.SalesOrderHeaderSalesReasons = new HashSet<SalesOrderHeaderSalesReason>();
         }
 
         /// <summary>
-        /// Gets or sets the sales reason id.
+        ///     Gets or sets the modified date.
         /// </summary>
-        public int SalesReasonID { get; set; }
+        public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the reason type.
+        ///     Gets or sets the reason type.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string ReasonType { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the sales order header sales reasons.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
 
         /// <summary>
-        /// Gets or sets the sales order header sales reasons.
+        ///     Gets or sets the sales reason id.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SalesOrderHeaderSalesReason> SalesOrderHeaderSalesReasons { get; set; }
+        public int SalesReasonID { get; set; }
     }
 }

@@ -5,13 +5,13 @@ namespace AdventureWorks.Domain
     using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
-    /// The person credit card.
+    ///     The person credit card.
     /// </summary>
     [Table("Sales.PersonCreditCard")]
-    public class PersonCreditCard
+    public class PersonCreditCard : Entity
     {
         /// <summary>
-        /// Gets or sets the business entity id.
+        ///     Gets or sets the business entity id.
         /// </summary>
         [Key]
         [Column(Order = 0)]
@@ -19,7 +19,12 @@ namespace AdventureWorks.Domain
         public int BusinessEntityID { get; set; }
 
         /// <summary>
-        /// Gets or sets the credit card id.
+        ///     Gets or sets the credit card.
+        /// </summary>
+        public virtual CreditCard CreditCard { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the credit card id.
         /// </summary>
         [Key]
         [Column(Order = 1)]
@@ -27,18 +32,13 @@ namespace AdventureWorks.Domain
         public int CreditCardID { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the person.
+        ///     Gets or sets the person.
         /// </summary>
         public virtual Person Person { get; set; }
-
-        /// <summary>
-        /// Gets or sets the credit card.
-        /// </summary>
-        public virtual CreditCard CreditCard { get; set; }
     }
 }

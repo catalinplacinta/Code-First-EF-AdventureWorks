@@ -7,43 +7,44 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The product description.
+    ///     The product description.
     /// </summary>
     [Table("Production.ProductDescription")]
-    public class ProductDescription
+    public class ProductDescription : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ProductDescription"/> class.
+        ///     Initializes a new instance of the <see cref="ProductDescription" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public ProductDescription()
         {
             this.ProductModelProductDescriptionCultures = new HashSet<ProductModelProductDescriptionCulture>();
         }
 
         /// <summary>
-        /// Gets or sets the product description id.
-        /// </summary>
-        public int ProductDescriptionID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the description.
+        ///     Gets or sets the description.
         /// </summary>
         [Required]
         [StringLength(400)]
         public string Description { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the product model product description cultures.
+        ///     Gets or sets the product description id.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get; set; }
+        public int ProductDescriptionID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product model product description cultures.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductModelProductDescriptionCulture> ProductModelProductDescriptionCultures { get;
+            set; }
     }
 }

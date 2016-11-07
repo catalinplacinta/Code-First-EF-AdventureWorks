@@ -7,16 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The currency.
+    ///     The currency.
     /// </summary>
     [Table("Sales.Currency")]
-    public class Currency
+    public class Currency : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Currency"/> class.
+        ///     Initializes a new instance of the <see cref="Currency" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Currency()
         {
             this.CountryRegionCurrencies = new HashSet<CountryRegionCurrency>();
@@ -25,43 +25,43 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the currency code.
+        ///     Gets or sets the country region currencies.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the currency code.
         /// </summary>
         [Key]
         [StringLength(3)]
         public string CurrencyCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the currency rates.
         /// </summary>
-        [Required]
-        [StringLength(50)]
-        public string Name { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<CurrencyRate> CurrencyRates { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the currency rates 1.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<CurrencyRate> CurrencyRates1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the modified date.
         /// </summary>
         public DateTime ModifiedDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the country region currencies.
+        ///     Gets or sets the name.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CountryRegionCurrency> CountryRegionCurrencies { get; set; }
-
-        /// <summary>
-        /// Gets or sets the currency rates.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrencyRate> CurrencyRates { get; set; }
-
-        /// <summary>
-        /// Gets or sets the currency rates 1.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CurrencyRate> CurrencyRates1 { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Name { get; set; }
     }
 }

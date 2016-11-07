@@ -7,16 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The state province.
+    ///     The state province.
     /// </summary>
     [Table("Person.StateProvince")]
-    public class StateProvince
+    public class StateProvince : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="StateProvince"/> class.
+        ///     Initializes a new instance of the <see cref="StateProvince" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public StateProvince()
         {
             this.Addresses = new HashSet<Address>();
@@ -24,68 +24,68 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the state province id.
+        ///     Gets or sets the addresses.
         /// </summary>
-        public int StateProvinceID { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<Address> Addresses { get; set; }
 
         /// <summary>
-        /// Gets or sets the state province code.
+        ///     Gets or sets the country region.
         /// </summary>
-        [Required]
-        [StringLength(3)]
-        public string StateProvinceCode { get; set; }
+        public virtual CountryRegion CountryRegion { get; set; }
 
         /// <summary>
-        /// Gets or sets the country region code.
+        ///     Gets or sets the country region code.
         /// </summary>
         [Required]
         [StringLength(3)]
         public string CountryRegionCode { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether is only state province flag.
+        ///     Gets or sets a value indicating whether is only state province flag.
         /// </summary>
         public bool IsOnlyStateProvinceFlag { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the territory id.
+        ///     Gets or sets the sales tax rates.
         /// </summary>
-        public int TerritoryID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the addresses.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Address> Addresses { get; set; }
-
-        /// <summary>
-        /// Gets or sets the country region.
-        /// </summary>
-        public virtual CountryRegion CountryRegion { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales tax rates.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<SalesTaxRate> SalesTaxRates { get; set; }
 
         /// <summary>
-        /// Gets or sets the sales territory.
+        ///     Gets or sets the sales territory.
         /// </summary>
         public virtual SalesTerritory SalesTerritory { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the state province code.
+        /// </summary>
+        [Required]
+        [StringLength(3)]
+        public string StateProvinceCode { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the state province id.
+        /// </summary>
+        public int StateProvinceID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the territory id.
+        /// </summary>
+        public int TerritoryID { get; set; }
     }
 }

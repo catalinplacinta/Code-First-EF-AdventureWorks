@@ -62,11 +62,20 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contexts\Context.cs" />
+    <Compile Include="Contexts\HumanResourcesContext.cs" />
+    <Compile Include="Contexts\PersonContext.cs" />
+    <Compile Include="Contexts\ProductionContext.cs" />
+    <Compile Include="Contexts\PurchasingContext.cs" />
+    <Compile Include="Contexts\SalesContext.cs" />
+    <Compile Include="Domain\Entity.cs" />
+    <Compile Include="Initializers\AdventureWorksInitializer.cs" />
     <Compile Include="Domain\Address.cs" />
     <Compile Include="Domain\AddressType.cs" />
     <Compile Include="Domain\BillOfMaterial.cs" />
@@ -89,7 +98,7 @@
     <Compile Include="Domain\Illustration.cs" />
     <Compile Include="Domain\JobCandidate.cs" />
     <Compile Include="Domain\Location.cs" />
-    <Compile Include="AdventureWorksContext.cs" />
+    <Compile Include="Contexts\AdventureWorksContext.cs" />
     <Compile Include="Domain\Password.cs" />
     <Compile Include="Domain\Person.cs" />
     <Compile Include="Domain\PersonCreditCard.cs" />
@@ -110,6 +119,11 @@
     <Compile Include="Domain\ProductReview.cs" />
     <Compile Include="Domain\ProductSubcategory.cs" />
     <Compile Include="Domain\ProductVendor.cs" />
+    <Compile Include="Initializers\HumanResourcesInitializer.cs" />
+    <Compile Include="Initializers\PersonInitializer.cs" />
+    <Compile Include="Initializers\ProductionInitializer.cs" />
+    <Compile Include="Initializers\PurchasingInitializer.cs" />
+    <Compile Include="Initializers\SalesInitializer.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Domain\PurchaseOrderDetail.cs" />
@@ -137,7 +151,7 @@
     <Compile Include="Domain\Vendor.cs" />
     <Compile Include="Domain\WorkOrder.cs" />
     <Compile Include="Domain\WorkOrderRouting.cs" />
-    <Compile Include="SeedData\SeedHelper.cs" />
+    <Compile Include="Helpers\SeedHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -211,6 +225,7 @@
     <EmbeddedResource Include="SeedData\WorkOrder.zip" />
     <EmbeddedResource Include="SeedData\WorkOrderRouting.zip" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

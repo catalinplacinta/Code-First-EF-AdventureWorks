@@ -7,66 +7,66 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The store.
+    ///     The store.
     /// </summary>
     [Table("Sales.Store")]
-    public class Store
+    public class Store : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Store"/> class.
+        ///     Initializes a new instance of the <see cref="Store" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Store()
         {
             this.Customers = new HashSet<Customer>();
         }
 
         /// <summary>
-        /// Gets or sets the business entity id.
+        ///     Gets or sets the business entity.
+        /// </summary>
+        public virtual BusinessEntity BusinessEntity { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the business entity id.
         /// </summary>
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int BusinessEntityID { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the customers.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<Customer> Customers { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the demographics.
+        /// </summary>
+        [Column(TypeName = "xml")]
+        public string Demographics { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the sales person id.
-        /// </summary>
-        public int? SalesPersonID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the demographics.
-        /// </summary>
-        [Column(TypeName = "xml")]
-        public string Demographics { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the business entity.
-        /// </summary>
-        public virtual BusinessEntity BusinessEntity { get; set; }
-
-        /// <summary>
-        /// Gets or sets the customers.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer> Customers { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sales person.
+        ///     Gets or sets the sales person.
         /// </summary>
         public virtual SalesPerson SalesPerson { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the sales person id.
+        /// </summary>
+        public int? SalesPersonID { get; set; }
     }
 }

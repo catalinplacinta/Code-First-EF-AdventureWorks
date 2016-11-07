@@ -7,16 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The product.
+    ///     The product.
     /// </summary>
     [Table("Production.Product")]
-    public class Product
+    public class Product : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Product"/> class.
+        ///     Initializes a new instance of the <see cref="Product" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Product()
         {
             this.BillOfMaterials = new HashSet<BillOfMaterial>();
@@ -35,253 +35,254 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the product id.
+        ///     Gets or sets the bill of materials.
         /// </summary>
-        public int ProductID { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<BillOfMaterial> BillOfMaterials { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the bill of materials 1.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<BillOfMaterial> BillOfMaterials1 { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the class.
+        /// </summary>
+        [StringLength(2)]
+        public string Class { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the color.
+        /// </summary>
+        [StringLength(15)]
+        public string Color { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the days to manufacture.
+        /// </summary>
+        public int DaysToManufacture { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the discontinued date.
+        /// </summary>
+        public DateTime? DiscontinuedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether finished goods flag.
+        /// </summary>
+        public bool FinishedGoodsFlag { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the list price.
+        /// </summary>
+        [Column(TypeName = "money")]
+        public decimal ListPrice { get; set; }
+
+        /// <summary>
+        ///     Gets or sets a value indicating whether make flag.
+        /// </summary>
+        public bool MakeFlag { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the product number.
+        ///     Gets or sets the product cost histories.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductCostHistory> ProductCostHistories { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product document.
+        /// </summary>
+        public virtual ProductDocument ProductDocument { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product id.
+        /// </summary>
+        public int ProductID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product inventories.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductInventory> ProductInventories { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product line.
+        /// </summary>
+        [StringLength(2)]
+        public string ProductLine { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product list price histories.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistories { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product model.
+        /// </summary>
+        public virtual ProductModel ProductModel { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product model id.
+        /// </summary>
+        public int? ProductModelID { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the product number.
         /// </summary>
         [Required]
         [StringLength(25)]
         public string ProductNumber { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether make flag.
+        ///     Gets or sets the product product photoes.
         /// </summary>
-        public bool MakeFlag { get; set; }
+        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductProductPhoto> ProductProductPhotoes { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether finished goods flag.
+        ///     Gets or sets the product reviews.
         /// </summary>
-        public bool FinishedGoodsFlag { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductReview> ProductReviews { get; set; }
 
         /// <summary>
-        /// Gets or sets the color.
+        ///     Gets or sets the product subcategory.
         /// </summary>
-        [StringLength(15)]
-        public string Color { get; set; }
+        public virtual ProductSubcategory ProductSubcategory { get; set; }
 
         /// <summary>
-        /// Gets or sets the safety stock level.
+        ///     Gets or sets the product subcategory id.
         /// </summary>
-        public short SafetyStockLevel { get; set; }
+        public int? ProductSubcategoryID { get; set; }
 
         /// <summary>
-        /// Gets or sets the reorder point.
+        ///     Gets or sets the product vendors.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the purchase order details.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the reorder point.
         /// </summary>
         public short ReorderPoint { get; set; }
 
         /// <summary>
-        /// Gets or sets the standard cost.
+        ///     Gets or sets the safety stock level.
         /// </summary>
-        [Column(TypeName = "money")]
-        public decimal StandardCost { get; set; }
+        public short SafetyStockLevel { get; set; }
 
         /// <summary>
-        /// Gets or sets the list price.
+        ///     Gets or sets the sell end date.
         /// </summary>
-        [Column(TypeName = "money")]
-        public decimal ListPrice { get; set; }
+        public DateTime? SellEndDate { get; set; }
 
         /// <summary>
-        /// Gets or sets the size.
+        ///     Gets or sets the sell start date.
+        /// </summary>
+        public DateTime SellStartDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the shopping cart items.
+        /// </summary>
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the size.
         /// </summary>
         [StringLength(5)]
         public string Size { get; set; }
 
         /// <summary>
-        /// Gets or sets the size unit measure code.
+        ///     Gets or sets the size unit measure code.
         /// </summary>
         [StringLength(3)]
         public string SizeUnitMeasureCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the weight unit measure code.
+        ///     Gets or sets the special offer products.
         /// </summary>
-        [StringLength(3)]
-        public string WeightUnitMeasureCode { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<SpecialOfferProduct> SpecialOfferProducts { get; set; }
 
         /// <summary>
-        /// Gets or sets the weight.
+        ///     Gets or sets the standard cost.
         /// </summary>
-        public decimal? Weight { get; set; }
+        [Column(TypeName = "money")]
+        public decimal StandardCost { get; set; }
 
         /// <summary>
-        /// Gets or sets the days to manufacture.
-        /// </summary>
-        public int DaysToManufacture { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product line.
-        /// </summary>
-        [StringLength(2)]
-        public string ProductLine { get; set; }
-
-        /// <summary>
-        /// Gets or sets the class.
-        /// </summary>
-        [StringLength(2)]
-        public string Class { get; set; }
-
-        /// <summary>
-        /// Gets or sets the style.
+        ///     Gets or sets the style.
         /// </summary>
         [StringLength(2)]
         public string Style { get; set; }
 
         /// <summary>
-        /// Gets or sets the product subcategory id.
+        ///     Gets or sets the transaction histories.
         /// </summary>
-        public int? ProductSubcategoryID { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<TransactionHistory> TransactionHistories { get; set; }
 
         /// <summary>
-        /// Gets or sets the product model id.
-        /// </summary>
-        public int? ProductModelID { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sell start date.
-        /// </summary>
-        public DateTime SellStartDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the sell end date.
-        /// </summary>
-        public DateTime? SellEndDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the discontinued date.
-        /// </summary>
-        public DateTime? DiscontinuedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the bill of materials.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfMaterial> BillOfMaterials { get; set; }
-
-        /// <summary>
-        /// Gets or sets the bill of materials 1.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfMaterial> BillOfMaterials1 { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product model.
-        /// </summary>
-        public virtual ProductModel ProductModel { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product subcategory.
-        /// </summary>
-        public virtual ProductSubcategory ProductSubcategory { get; set; }
-
-        /// <summary>
-        /// Gets or sets the unit measure.
+        ///     Gets or sets the unit measure.
         /// </summary>
         public virtual UnitMeasure UnitMeasure { get; set; }
 
         /// <summary>
-        /// Gets or sets the unit measure 1.
+        ///     Gets or sets the unit measure 1.
         /// </summary>
         public virtual UnitMeasure UnitMeasure1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the product cost histories.
+        ///     Gets or sets the weight.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductCostHistory> ProductCostHistories { get; set; }
+        public decimal? Weight { get; set; }
 
         /// <summary>
-        /// Gets or sets the product document.
+        ///     Gets or sets the weight unit measure code.
         /// </summary>
-        public virtual ProductDocument ProductDocument { get; set; }
+        [StringLength(3)]
+        public string WeightUnitMeasureCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the product inventories.
+        ///     Gets or sets the work orders.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductInventory> ProductInventories { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product list price histories.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductListPriceHistory> ProductListPriceHistories { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product product photoes.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.DocumentationRules", "SA1650:ElementDocumentationMustBeSpelledCorrectly", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductProductPhoto> ProductProductPhotoes { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product reviews.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductReview> ProductReviews { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product vendors.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductVendor> ProductVendors { get; set; }
-
-        /// <summary>
-        /// Gets or sets the purchase order details.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PurchaseOrderDetail> PurchaseOrderDetails { get; set; }
-
-        /// <summary>
-        /// Gets or sets the shopping cart items.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
-
-        /// <summary>
-        /// Gets or sets the special offer products.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SpecialOfferProduct> SpecialOfferProducts { get; set; }
-
-        /// <summary>
-        /// Gets or sets the transaction histories.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionHistory> TransactionHistories { get; set; }
-
-        /// <summary>
-        /// Gets or sets the work orders.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<WorkOrder> WorkOrders { get; set; }
     }
 }

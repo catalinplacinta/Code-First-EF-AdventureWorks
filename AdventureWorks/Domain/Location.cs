@@ -7,16 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The location.
+    ///     The location.
     /// </summary>
     [Table("Production.Location")]
-    public class Location
+    public class Location : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Location"/> class.
+        ///     Initializes a new instance of the <see cref="Location" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public Location()
         {
             this.ProductInventories = new HashSet<ProductInventory>();
@@ -24,45 +24,45 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the location id.
+        ///     Gets or sets the availability.
+        /// </summary>
+        public decimal Availability { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the cost rate.
+        /// </summary>
+        [Column(TypeName = "smallmoney")]
+        public decimal CostRate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the location id.
         /// </summary>
         public short LocationID { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the cost rate.
+        ///     Gets or sets the product inventories.
         /// </summary>
-        [Column(TypeName = "smallmoney")]
-        public decimal CostRate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the availability.
-        /// </summary>
-        public decimal Availability { get; set; }
-
-        /// <summary>
-        /// Gets or sets the modified date.
-        /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the product inventories.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<ProductInventory> ProductInventories { get; set; }
 
         /// <summary>
-        /// Gets or sets the work order routings.
+        ///     Gets or sets the work order routings.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<WorkOrderRouting> WorkOrderRoutings { get; set; }
     }
 }

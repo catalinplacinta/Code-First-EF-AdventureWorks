@@ -7,16 +7,16 @@ namespace AdventureWorks.Domain
     using System.Diagnostics.CodeAnalysis;
 
     /// <summary>
-    /// The unit measure.
+    ///     The unit measure.
     /// </summary>
     [Table("Production.UnitMeasure")]
-    public class UnitMeasure
+    public class UnitMeasure : Entity
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="UnitMeasure"/> class.
+        ///     Initializes a new instance of the <see cref="UnitMeasure" /> class.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        [SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors",
+             Justification = "Reviewed. Suppression is OK here.")]
         public UnitMeasure()
         {
             this.BillOfMaterials = new HashSet<BillOfMaterial>();
@@ -26,50 +26,50 @@ namespace AdventureWorks.Domain
         }
 
         /// <summary>
-        /// Gets or sets the unit measure code.
+        ///     Gets or sets the bill of materials.
         /// </summary>
-        [Key]
-        [StringLength(3)]
-        public string UnitMeasureCode { get; set; }
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
+        public virtual ICollection<BillOfMaterial> BillOfMaterials { get; set; }
 
         /// <summary>
-        /// Gets or sets the name.
+        ///     Gets or sets the modified date.
+        /// </summary>
+        public DateTime ModifiedDate { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the name.
         /// </summary>
         [Required]
         [StringLength(50)]
         public string Name { get; set; }
 
         /// <summary>
-        /// Gets or sets the modified date.
+        ///     Gets or sets the products.
         /// </summary>
-        public DateTime ModifiedDate { get; set; }
-
-        /// <summary>
-        /// Gets or sets the bill of materials.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BillOfMaterial> BillOfMaterials { get; set; }
-
-        /// <summary>
-        /// Gets or sets the products.
-        /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<Product> Products { get; set; }
 
         /// <summary>
-        /// Gets or sets the products 1.
+        ///     Gets or sets the products 1.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<Product> Products1 { get; set; }
 
         /// <summary>
-        /// Gets or sets the product vendors.
+        ///     Gets or sets the product vendors.
         /// </summary>
-        [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1404:CodeAnalysisSuppressionMustHaveJustification", Justification = "Reviewed. Suppression is OK here.")]
-        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly",
+             Justification = "Reviewed. Suppression is OK here.")]
         public virtual ICollection<ProductVendor> ProductVendors { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the unit measure code.
+        /// </summary>
+        [Key]
+        [StringLength(3)]
+        public string UnitMeasureCode { get; set; }
     }
 }
